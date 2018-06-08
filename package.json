@@ -1,0 +1,29 @@
+{
+  "name": "phorejs",
+  "version": "1.0.0",
+  "description": "Phore Javascript Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoreproject/phorejs.git"
+  },
+  "keywords": [
+    "phore",
+    "phr",
+    "blockchain"
+  ],
+  "author": "Greg Marlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phoreproject/phorejs/issues"
+  },
+  "homepage": "https://github.com/phoreproject/phorejs#readme",
+  "dependencies": {
+    "coininfo": "^4.0.0",
+    "coinkey": "^3.0.0",
+    "qr-encode": "^0.3.0"
+  }
+}
