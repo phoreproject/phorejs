@@ -6,7 +6,7 @@ Phore Javascript Library. This is a work in progress.
 ```
 git clone https://github.com/phoreproject/phorejs.git
 cd phorejs
-npm install
+
 ```
 
 ## Create a Phore Private Key (WIF and Hex) and Public Key Address
