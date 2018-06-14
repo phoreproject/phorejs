@@ -1,0 +1,27 @@
+{
+  "name": "phorerate",
+  "version": "1.0.0",
+  "description": "Provides exchange rates for Phore to Fiat, BTC, and other Altcoins. Also provides Altcoins to Fiat and Altcoins to other Altcoins. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phoreproject/phorejs/packages/phorerate"
+  },
+  "keywords": [
+    "phore",
+    "exchange",
+    "rates",
+    "altcoins",
+    "btc",
+    "fiat"
+  ],
+  "author": "Greg Marlin",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.87.0",
+    "underscore": "^1.9.1"
+  }
+}
