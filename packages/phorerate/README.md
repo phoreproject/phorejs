@@ -9,7 +9,7 @@ npm install phorerate --save
 
 In Node.js:
 
-```
+``` javascript
 const phorerate = require('phorerate');
 
 phorerate.getPhoreRate('USD').then(console.log) // returns the current rate of Phore to USD --> replace with another currency code from bitpay.com/rates to get that rate
