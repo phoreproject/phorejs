@@ -1,0 +1,28 @@
+{
+  "name": "phore-rpc",
+  "version": "1.0.0",
+  "description": "For interacting with the Phore RPC API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoreproject/phorejs.git"
+  },
+  "keywords": [
+    "phore",
+    "json-rpc",
+    "rpc",
+    "api"
+  ],
+  "author": "Greg Marlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phoreproject/phorejs/issues"
+  },
+  "homepage": "https://github.com/phoreproject/phorejs#readme",
+  "dependencies": {
+    "request": "^2.87.0"
+  }
+}
