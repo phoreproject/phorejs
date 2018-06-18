@@ -9,6 +9,8 @@ module.exports = {
   ECPair: require('./ecpair'),
   Transaction: require('./transaction'),
   TransactionBuilder: require('./transaction_builder'),
+  ECSignature: require('./ecsignature'),
+  HDNode: require('./hdnode'),
 
   address: require('./address'),
   bip32: require('bip32'),
