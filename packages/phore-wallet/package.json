@@ -1,0 +1,36 @@
+{
+  "name": "phore-wallet",
+  "version": "1.0.0",
+  "description": "Simplified utility for working with wallet-related commands for Phore Wallets, written in Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoreproject/phorejs.git"
+  },
+  "keywords": [
+    "phore",
+    "wallet",
+    "bip39",
+    "bip32",
+    "mnemonic",
+    "seed",
+    "wif",
+    "xpub",
+    "backup",
+    "restore"
+  ],
+  "author": "Greg Marlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phoreproject/phorejs/issues"
+  },
+  "homepage": "https://github.com/phoreproject/phorejs#readme",
+  "dependencies": {
+    "bip32": "^0.1.0",
+    "bip39": "^2.5.0",
+    "bitcoinjs-phore": "^1.1.0"
+  }
+}
