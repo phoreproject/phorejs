@@ -1,130 +1,31 @@
-const request = require('request');
-const _ = require('underscore');
+const request = require('request-promise')
+const _ = require('underscore')
 
-var requestAsync = function(url) {
-	return new Promise((resolve, reject) => {
-		var req = request(url, (err, response, body) => {
-			if(err) return reject(err, response, body);
-			resolve(JSON.parse(body));
-		});
-	});
-};
+async function getAltcoinRate (altcoin, fiatCurrency) {
+  const cmcData = JSON.parse(await request(`https://api.coinmarketcap.com/v1/ticker/${altcoin}/`))
+  const bitpayData = JSON.parse(await request('https://bitpay.com/rates'))
 
-const urls = [
-	'https://api.coinmarketcap.com/v1/ticker/phore/',
-	'https://bitpay.com/rates'
-	];
+  const btcPrice = cmcData[0].price_btc
 
+  var fiatrate = _.where(bitpayData.data, {code: fiatCurrency.toUpperCase()})[0].rate
 
-var getPhoreRate = async function(fc) {
+  var fiatPrice = btcPrice * fiatrate
 
-	try {
-		var data = await Promise.all(urls.map(requestAsync));
-	} catch (err) {
-		console.error(err);
-	}
-	var fc;
-	var phorebtcbody = data[0][0].price_btc;
-	
-	var fiatrates = data[1].data;
-	var fiatfiltered = _.where(fiatrates, {code: fc});
-	
-	var fiatrate = fiatfiltered[0].rate;
-	
-	var phore2fiatrate = phorebtcbody * fiatrate;
-	
-	return phore2fiatrate
-	
-
+  return fiatPrice
 }
 
-var getAltRate = async function(fc, ac) {
-
-	var ac;
-
-	const urls1 = [
-	`https://api.coinmarketcap.com/v1/ticker/${ac}/`,
-	'https://bitpay.com/rates'
-	];
-
-	try {
-		var data = await Promise.all(urls1.map(requestAsync));
-	} catch (err) {
-		console.error(err);
-	}
-	var fc;
-	
-	var altbtcbody = data[0][0].price_btc;
-	
-	var fiatrates = data[1].data;
-	var fiatfiltered = _.where(fiatrates, {code: fc});
-	
-	var fiatrate = fiatfiltered[0].rate;
-	
-	var alt2fiatrate = altbtcbody * fiatrate;
-	
-	return alt2fiatrate
-
-
+async function getPhoreRate (fiatCurrency) {
+  return getAltcoinRate('phore', fiatCurrency)
 }
 
-var getPhore2AltRate = async function(ac) {
-
-	var ac;
-
-	const urls2 = [
-	`https://api.coinmarketcap.com/v1/ticker/${ac}/`,
-	'https://api.coinmarketcap.com/v1/ticker/phore/'
-	];
-
-	try {
-		var data = await Promise.all(urls2.map(requestAsync));
-	} catch (err) {
-		console.error(err);
-	}
-	
-	var ac;
-	var altbtcbody1 = data[0][0].price_btc;
-	
-	var phorebtcbody1 = data[1][0].price_btc;
-	
-	var phore2alt = phorebtcbody1 / altbtcbody1;
-	
-	return phore2alt
-	
-
+async function getExchangeRate (altcoin, inTermsOf) {
+  let altcoinRate = await getAltcoinRate(altcoin, 'BTC')
+  let inTermsOfRate = await getAltcoinRate(inTermsOf, 'BTC')
+  return altcoinRate / inTermsOfRate
 }
 
-var getAlt2AltRate = async function(ac1, ac2) {
-
-	var ac1, ac2;
-	
-
-	const urls3 = [
-	`https://api.coinmarketcap.com/v1/ticker/${ac1}/`,
-	`https://api.coinmarketcap.com/v1/ticker/${ac2}/`
-	];
-
-	try {
-		var data = await Promise.all(urls3.map(requestAsync));
-	} catch (err) {
-		console.error(err);
-	}
-	
-	
-	var altbtcbody2 = data[0][0].price_btc;
-	
-	var altbtcbody3 = data[1][0].price_btc;
-	
-	var alt2alt = altbtcbody2 / altbtcbody3;
-	
-	return alt2alt
-	
-
+module.exports = {
+  getAltcoinRate,
+  getPhoreRate,
+  getExchangeRate
 }
-
-module.exports.getPhoreRate = getPhoreRate;
-module.exports.getAltRate = getAltRate;
-module.exports.getPhore2AltRate = getPhore2AltRate;
-module.exports.getAlt2AltRate = getAlt2AltRate;
-
