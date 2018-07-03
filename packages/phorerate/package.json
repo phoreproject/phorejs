@@ -22,7 +22,6 @@
   "license": "MIT",
   "dependencies": {
     "request": "^2.87.0",
-    "request-promise": "^4.2.2",
     "underscore": "^1.9.1"
   }
 }
