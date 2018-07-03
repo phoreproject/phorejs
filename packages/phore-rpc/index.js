@@ -64,5 +64,6 @@ PhoreRPC.addMethod('ping')
 PhoreRPC.addMethod('masternode')
 PhoreRPC.addMethod('submitblock')
 PhoreRPC.addMethod('sendrawtransaction')
+PhoreRPC.addMethod('searchrawtransactions')
 
 module.exports = PhoreRPC
